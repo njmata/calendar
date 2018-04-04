@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
+import Month from "./Month";
+
+const test = [
+    {
+        number: 7,
+        year: 2008,
+        weeks: []
+    }
+];
 
 class App extends Component {
     state = {
@@ -40,6 +49,9 @@ class App extends Component {
                 <div className="requirement__field">
                     <label>Country Code: </label>
                     <input type="text" onChange={this.onCountryCodeChange} />
+                </div>
+                <div>
+                    <Month month={test[0]} />
                 </div>
             </div>
         );

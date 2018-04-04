@@ -1,7 +1,27 @@
+h5 {
+    margin: 0;
+    padding: 0;
+}
 .app {
     text-align: center;
 }
 
 .requirement__field {
     margin-bottom: 10px;
+}
+
+.calendar__month {
+    width: 300px;
+}
+
+.calendar__month_title {
+    background-color: #dcedc8;
+    padding: 10px 0;
+}
+
+.calendar__month_weeks-day {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+    grid-auto-rows: 20px;
 }
