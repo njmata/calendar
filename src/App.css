@@ -19,7 +19,7 @@ h5 {
     padding: 10px 0;
 }
 
-.calendar__month_weeks-day {
+.calendar__month_weeks {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 5px;

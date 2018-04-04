@@ -6,7 +6,48 @@ const test = [
     {
         number: 7,
         year: 2008,
-        weeks: []
+        weeks: [
+            [
+                {
+                    dayOfTheWeek: 5,
+                    day: 15
+                },
+                {
+                    dayOfTheWeek: 6,
+                    day: 16
+                }
+            ],
+            [
+                {
+                    dayOfTheWeek: 0,
+                    day: 17
+                },
+                {
+                    dayOfTheWeek: 1,
+                    day: 18
+                },
+                {
+                    dayOfTheWeek: 2,
+                    day: 19
+                },
+                {
+                    dayOfTheWeek: 3,
+                    day: 20
+                },
+                {
+                    dayOfTheWeek: 4,
+                    day: 21
+                },
+                {
+                    dayOfTheWeek: 5,
+                    day: 22
+                },
+                {
+                    dayOfTheWeek: 6,
+                    day: 23
+                }
+            ]
+        ]
     }
 ];
 
