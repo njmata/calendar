@@ -24,9 +24,15 @@ export default class WeekComponent extends PureComponent {
         for (let i = 0; i < 7; i++) {
             var index = week.findIndex(day => day.dayOfTheWeek === i);
             if (index === -1) {
-                daysArray.push(<Day text={""} key={i} />);
+                daysArray.push(<Day key={i} />);
             } else {
-                daysArray.push(<Day text={week[index].day} key={i} />);
+                daysArray.push(
+                    <Day
+                        dayOfTheWeek={week[index].dayOfTheWeek}
+                        text={week[index].day}
+                        key={i}
+                    />
+                );
             }
         }
 

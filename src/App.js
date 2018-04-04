@@ -1,61 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import Month from "./Month";
-
-const test = [
-    {
-        number: 7,
-        year: 2008,
-        weeks: [
-            [
-                {
-                    dayOfTheWeek: 5,
-                    day: 15
-                },
-                {
-                    dayOfTheWeek: 6,
-                    day: 16
-                }
-            ],
-            [
-                {
-                    dayOfTheWeek: 0,
-                    day: 17
-                },
-                {
-                    dayOfTheWeek: 1,
-                    day: 18
-                },
-                {
-                    dayOfTheWeek: 2,
-                    day: 19
-                },
-                {
-                    dayOfTheWeek: 3,
-                    day: 20
-                },
-                {
-                    dayOfTheWeek: 4,
-                    day: 21
-                },
-                {
-                    dayOfTheWeek: 5,
-                    day: 22
-                },
-                {
-                    dayOfTheWeek: 6,
-                    day: 23
-                }
-            ]
-        ]
-    }
-];
+import Calendar from "./Calendar";
 
 class App extends Component {
     state = {
         startDate: "",
         numberDays: 0,
-        countryCode: ""
+        countryCode: "",
+        months: []
     };
 
     onStartDateChange = evt => {
@@ -76,6 +28,51 @@ class App extends Component {
         });
     };
 
+    onCreateCalendar = () => {
+        let currentDate = new Date(this.state.startDate);
+        const endDate = new Date(this.state.startDate);
+        endDate.setDate(endDate.getDate() + Number(this.state.numberDays));
+
+        const months = [];
+        let currentWeek = [];
+        let currentMonthNumber = currentDate.getMonth();
+        let currentMonth = {
+            number: currentMonthNumber,
+            year: currentDate.getFullYear(),
+            weeks: []
+        };
+        while (currentDate < endDate) {
+            // Use UTC day to ensure that it is the same in all location
+            const currentDayOfTheWeek = currentDate.getUTCDay();
+            currentWeek.push({
+                dayOfTheWeek: currentDayOfTheWeek,
+                day: currentDate.getUTCDate()
+            });
+
+            // Added one day to the current day
+            currentDate.setDate(currentDate.getDate() + 1);
+            if (currentDate.getMonth() !== currentMonthNumber) {
+                currentMonth.weeks.push(currentWeek);
+                months.push(currentMonth);
+                currentMonthNumber = currentDate.getMonth();
+                currentMonth = {
+                    number: currentMonthNumber,
+                    year: currentDate.getFullYear(),
+                    weeks: []
+                };
+                currentWeek = [];
+            } else if (currentDate.getUTCDay() < currentDayOfTheWeek) {
+                // if the new day of the week is less that the current day of the week is means that a new week is started.
+                currentMonth.weeks.push(currentWeek);
+                currentWeek = [];
+            }
+        }
+
+        currentMonth.weeks.push(currentWeek);
+        months.push(currentMonth);
+        this.setState({ months });
+    };
+
     render() {
         return (
             <div className="app">
@@ -92,7 +89,12 @@ class App extends Component {
                     <input type="text" onChange={this.onCountryCodeChange} />
                 </div>
                 <div>
-                    <Month month={test[0]} />
+                    <button type="button" onClick={this.onCreateCalendar}>
+                        Make calendars
+                    </button>
+                </div>
+                <div>
+                    <Calendar months={this.state.months} />
                 </div>
             </div>
         );

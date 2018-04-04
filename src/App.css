@@ -1,3 +1,10 @@
+:root {
+    --day-color-default: grey;
+    --day-color-weekday: #8bc34a;
+    --day-color-weekend: yellow;
+    --day-color-festiveday: orange;
+}
+
 h5 {
     margin: 0;
     padding: 0;
@@ -23,5 +30,20 @@ h5 {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 5px;
-    grid-auto-rows: 20px;
+    grid-auto-rows: 30px;
+    margin-bottom: 5px;
+}
+
+.day {
+    padding: 5px 0;
+}
+.no_day {
+    background-color: var(--day-color-default);
+}
+
+.weekday {
+    background-color: var(--day-color-weekday);
+}
+.weekend {
+    background-color: var(--day-color-weekend);
 }
