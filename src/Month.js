@@ -42,6 +42,8 @@ export default class MonthComponent extends PureComponent {
 
     render() {
         const { month } = this.props;
+        if (month.weeks.length === 0) return null;
+
         const daysOfTheWeek = this.dayOfTheWeek.map((day, index) => (
             <DaysOfTheWeek text={day} key={index} />
         ));

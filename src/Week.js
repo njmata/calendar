@@ -19,6 +19,7 @@ import Day from "./Day";
 export default class WeekComponent extends PureComponent {
     render() {
         const { week } = this.props;
+        if (week.length === 0) return null;
         const daysArray = [];
         // find the days represents in the array and fill the day information
         for (let i = 0; i < 7; i++) {

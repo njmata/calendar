@@ -51,13 +51,13 @@ class App extends Component {
 
             // Added one day to the current day
             currentDate.setDate(currentDate.getDate() + 1);
-            if (currentDate.getMonth() !== currentMonthNumber) {
+            if (currentDate.getUTCMonth() !== currentMonthNumber) {
                 currentMonth.weeks.push(currentWeek);
                 months.push(currentMonth);
-                currentMonthNumber = currentDate.getMonth();
+                currentMonthNumber = currentDate.getUTCMonth();
                 currentMonth = {
                     number: currentMonthNumber,
-                    year: currentDate.getFullYear(),
+                    year: currentDate.getUTCFullYear(),
                     weeks: []
                 };
                 currentWeek = [];
@@ -68,7 +68,10 @@ class App extends Component {
             }
         }
 
-        currentMonth.weeks.push(currentWeek);
+        if (currentWeek.length > 0) {
+            currentMonth.weeks.push(currentWeek);
+        }
+
         months.push(currentMonth);
         this.setState({ months });
     };

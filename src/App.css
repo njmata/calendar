@@ -19,6 +19,7 @@ h5 {
 
 .calendar__month {
     width: 300px;
+    margin-bottom: 20px;
 }
 
 .calendar__month_title {
