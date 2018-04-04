@@ -9,7 +9,7 @@ const Calendar = props => {
             <Month month={month} key={index} />
         ));
 
-        return <div>{months}</div>;
+        return <div className="calendar">{months}</div>;
     }
 };
 

@@ -10,6 +10,7 @@ h5 {
     padding: 0;
 }
 .app {
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -17,9 +18,15 @@ h5 {
     margin-bottom: 10px;
 }
 
+.calendar {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .calendar__month {
     width: 300px;
-    margin-bottom: 20px;
+    margin: 10px 10px;
 }
 
 .calendar__month_title {

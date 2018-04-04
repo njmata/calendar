@@ -93,12 +93,10 @@ class App extends Component {
                 </div>
                 <div>
                     <button type="button" onClick={this.onCreateCalendar}>
-                        Make calendars
+                        Make a calendar
                     </button>
                 </div>
-                <div>
-                    <Calendar months={this.state.months} />
-                </div>
+                <Calendar months={this.state.months} />
             </div>
         );
     }
